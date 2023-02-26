@@ -6,7 +6,9 @@ local inicfg = require 'inicfg'
 local fa = require 'fAwesome5'
 encoding.default = 'CP1251'
 u8 = encoding.UTF8
-sw,sh = getScreenResolution()
+sw = 1920
+sh = 1080
+ssw, ssh = getScreenResolution()
 local activator = imgui.ImBool(false)
 
 
@@ -147,7 +149,7 @@ end
 function imgui.OnDrawFrame()
     if activator.v then
         imgui.SetNextWindowSize(imgui.ImVec2(400, 500), imgui.Cond.FirstUseEver)
-        imgui.SetNextWindowPos(imgui.ImVec2((sw / 2), sh / 2), imgui.Cond.FirstUseEver,imgui.ImVec2(0.5,0.5))
+        imgui.SetNextWindowPos(imgui.ImVec2((ssw / 2), ssh / 2), imgui.Cond.FirstUseEver,imgui.ImVec2(0.5,0.5))
         imgui.Begin(fa.ICON_FA_STICKY_NOTE .. u8' Биндер', activator,imgui.WindowFlags.NoResize + imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoMove)
         imgui.InputText(u8'Команда Активации',cmdactivate)
         if imgui.Button(fa.ICON_FA_CHECK .. u8' Сохранить команду') then 
